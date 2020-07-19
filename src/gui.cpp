@@ -14,7 +14,6 @@
 //
 // You should have received a copy of the GNU General Public License
 // along with Turnips.  If not, see <http://www.gnu.org/licenses/>.
-
 #include <cstdio>
 #include <cstring>
 #include <algorithm>
@@ -24,9 +23,7 @@
 #include <stb_image.h>
 #include "imgui_nx/imgui_deko3d.h"
 #include "imgui_nx/imgui_nx.h"
-
 #include "gui.hpp"
-
 #include "theme.hpp"
 
 namespace gui {
@@ -77,7 +74,25 @@ dk::UniqueSwapchain    s_swapchain;
     bool import_flag = false;
 
     Incognito incognito;
- //
+ //语言设置变量
+int e_setting_language = 0;
+
+void draw_setting()
+{
+    ImGui::RadioButton("中文", &e_setting_language, Language::Chinese);
+    ImGui::RadioButton("English", &e_setting_language, Language::English);
+    switch(e_setting_language)
+    {
+            case Language::Chinese:
+                    Lang::setLanguage(Chinese);
+                    break;
+            case Language::English:
+                    Lang::setLanguage(English);
+                    break;
+            default:
+                    break;
+    }    
+}
 
 void rebuildSwapchain(unsigned const width_, unsigned const height_) {
     // destroy old swapchain

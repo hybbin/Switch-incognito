@@ -77,7 +77,6 @@ int main(int argc, char **argv)
                 th::apply_theme(th::Theme::Dark);
         Lang::setLanguage(Language::Chinese);
         ///////////////////////
-        int e = 0;
         while (gui::loop())
         {
 
@@ -97,19 +96,7 @@ int main(int argc, char **argv)
                         }
                         if (ImGui::BeginTabItem(Lang::stringtochar("bar_2"_lang)))
                         {
-                               ImGui::RadioButton("中文", &e, Language::Chinese);
-                                ImGui::RadioButton("English", &e, Language::English);
-                               switch(e)
-                                {
-                                        case Language::Chinese:
-                                                Lang::setLanguage(Chinese);
-                                                break;
-                                        case Language::English:
-                                                Lang::setLanguage(English);
-                                                break;
-                                        default:
-                                                break;
-                                }
+                                gui::draw_setting();
                                 ImGui::EndTabItem();
                         }
                         ImGui::EndTabBar();

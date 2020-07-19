@@ -49,7 +49,7 @@ void exit();
 bool create_background(const std::string &path);
 
 void draw_main_function();
-
+void draw_setting();
 
 template <typename F>
 void do_with_color(std::uint32_t col, F f) {
